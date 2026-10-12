@@ -1,4 +1,4 @@
-# gnn-pyg-examples
+![gnn-pyg-examples: graph neural networks, runnable PyTorch Geometric examples](images/gnn-pyg-examples.png)
 
 Small, runnable [PyTorch Geometric](https://pytorch-geometric.readthedocs.io/) examples that explain how graph neural
 networks work. Open a module and you'll see just its GNN, in `gnn.py`, explained in plain docstrings. If you want to
