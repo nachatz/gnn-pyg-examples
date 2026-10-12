@@ -1,0 +1,14 @@
+line-length = 120
+
+[lint]
+extend-select = ["I"]
+
+[lint.isort]
+force-single-line = true
+section-order = [
+  "future",
+  "standard-library",
+  "third-party",
+  "first-party",
+  "local-folder",
+]
