@@ -18,9 +18,9 @@ method per section below. Run it with:
 uv run python -m modules.aggregation.story      # or: just aggregation
 ```
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## The idea
 
@@ -37,9 +37,9 @@ glue the messages into one long list. The usual choices are:
 | **mean** | the average message | the overall mix of what friends are like | how many friends there are |
 | **max** | the largest value for each feature | the strongest single signal | how many friends sent it, and everything below the peak |
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Walkthrough
 
@@ -49,7 +49,7 @@ We shuffle the order of the graph's edges and run `NeighbourhoodAggregator` with
 the same result every time. If we glue her messages into one long list instead, then *Joe, Bill, Mei* and
 *Mei, Bill, Joe* give different lists. That's why GNNs use order-blind aggregators.
 
-&nbsp;
+&#160;
 
 ### 2. Same messages, different answers
 
@@ -65,7 +65,7 @@ the aggregate straight through. Here's what Nancy hears from Joe, Bill and Mei:
 Max says Nancy's friends include someone who loves music *and* someone who loves food. It doesn't record that those
 are two different people.
 
-&nbsp;
+&#160;
 
 ### 3. Sum grows with the crowd
 
@@ -79,14 +79,14 @@ Omar's taste arrives from 1, then 10, then 1000 identical fans:
 
 In real graphs, a few very popular nodes can have huge sums that swamp the next layer.
 
-&nbsp;
+&#160;
 
 ### 4. Mean can't tell 1 friend from 2 identical friends
 
 A friend who hears from Mei, and one who hears from Mei and her twin, both average to
 `[0.5, 0.5, 0]`. Only sum (`[1, 1, 0]`) notices the twin.
 
-&nbsp;
+&#160;
 
 ### 5. Max can't tell 1 food lover from 3
 
@@ -97,7 +97,7 @@ Bill plus two non-foodies, and three Bills, both give a max food score of
 > that can tell all these neighbourhoods apart. Mean and max are more stable, though, so they are often good choices
 > in practice. PyG also lets you combine several aggregators, for example `aggr=["sum", "mean", "max"]`.
 
-&nbsp;
+&#160;
 
 ### 6. GCN normalisation: a middle ground
 
@@ -123,9 +123,9 @@ though, the weights still depend on how many friends each node has. Nancy's degr
 Joe's message counts the most because Joe has only one friend, so Nancy is all he has. The script checks that
 `HandGCNConv` gives the same weights as PyG's own `gcn_norm`, and that its output matches `GCNConv`'s.
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Takeaways
 
@@ -134,8 +134,8 @@ Joe's message counts the most because Joe has only one friend, so Nancy is all h
   signal.
 - GCN weighting shrinks messages from well-connected nodes, giving a balance between sum and mean.
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 Previous: [01 · Message passing](../message_passing/)

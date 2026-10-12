@@ -18,9 +18,9 @@ method per section below, and `FoodieTrainer`, the training loop for `FoodieGNN`
 uv run python -m modules.message_passing.story      # or: just message-passing
 ```
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## The idea
 
@@ -48,9 +48,9 @@ That's PyG's [`SAGEConv`](https://pytorch-geometric.readthedocs.io/en/latest/gen
 If you set both weights to ½ · identity and the bias to zero (`FrozenSAGEConv`), it computes the same thing as
 `MeanMessagePassing`.
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Walkthrough
 
@@ -73,14 +73,14 @@ Then she blends it with her own vector, `[0.1, 0.9, 0.0]`:
 
 Nancy has picked up some music and food from her friends, but she's still mostly about the outdoors.
 
-&nbsp;
+&#160;
 
 ### 2. The same round with PyG layers
 
 Both `MeanMessagePassing` and the frozen `SAGEConv` give Nancy `[0.283, 0.567, 0.150]`, exactly matching the hand
 calculation. A GNN layer is just this send-gather-update step, done for every node at once.
 
-&nbsp;
+&#160;
 
 ### 3. Two layers = two hops
 
@@ -93,7 +93,7 @@ the updated Nancy, so his food score rises to **0.075**.
 > **Rule of thumb:** with *k* layers, each node can see up to *k* hops away. That set of nodes is its *receptive
 > field*.
 
-&nbsp;
+&#160;
 
 ### 4. Training a tiny GNN
 
@@ -111,7 +111,7 @@ variables, for example `FOODIE_EPOCHS=10`.
 **Caveat:** the model trains on all six friends, so this shows that it can fit the labels, not that it generalises to
 friends it hasn't seen. On real graphs you hide some labels and check the predictions on those nodes.
 
-&nbsp;
+&#160;
 
 ### 5. Over-smoothing
 
@@ -130,9 +130,9 @@ After 30 layers everyone sits at about `[0.267, 0.417, 0.317]`. Joe the music lo
 This is **over-smoothing**, and it's why most GNNs use only 2 or 3 layers. Common fixes include residual connections,
 normalisation layers, and `JumpingKnowledge` (combining the outputs of every layer).
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Takeaways
 
@@ -141,8 +141,8 @@ normalisation layers, and `JumpingKnowledge` (combining the outputs of every lay
 - With learned weights, the same mechanism becomes a trainable model.
 - Too many layers make every node look nearly the same.
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 Next: [02 · Aggregation](../aggregation/), which compares the ways a node can gather its messages.

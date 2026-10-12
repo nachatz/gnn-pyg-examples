@@ -1,28 +1,25 @@
+mod common "justfiles/common.just"
+mod modules "justfiles/modules.just"
+mod repo "justfiles/repo.just"
+
 sync:
     uv sync
 
-message-passing:
-    uv run python -m modules.message_passing.story
+message-passing: modules::message-passing
 
-aggregation:
-    uv run python -m modules.aggregation.story
+aggregation: modules::aggregation
 
-run: message-passing aggregation
+run: modules::run
 
-fmt:
-    uv run ruff format .
-    uv run ruff check --fix .
+fmt: common::fmt modules::fmt repo::fmt
 
-check:
-    uv run ruff format --check .
-    uv run ruff check .
+check: common::check modules::check repo::check
 
-mypy:
-    uv run mypy common modules tests
+mypy: common::mypy modules::mypy
 
-test:
-    uv run pytest
+test: common::test modules::test
 
+# Coverage runs the whole suite at once, since fail_under = 100 applies to everything.
 cov:
     uv run pytest --cov --cov-report=term-missing
 
