@@ -7,9 +7,9 @@ README that walks through the idea, and a companion video.
 
 > ▶ **Videos:** every module has a companion video on [my YouTube channel](https://www.youtube.com/channel/UC8sEwtZPRADZHXzlOGDHXyw).
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Quick start
 
@@ -24,9 +24,9 @@ Each module runs on a CPU in a few seconds. To run both at once: `just run`.
 Tested with Python 3.13, torch 2.14.1 and torch-geometric 2.8.1. Run [mise](https://mise.jdx.dev/) `install` to get
 the pinned Python, uv and just.
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Modules
 
@@ -35,9 +35,9 @@ the pinned Python, uv and just.
 | [01 Message passing](modules/message_passing/) | [▶ watch](https://www.youtube.com/watch?v=segXtOfZbG8) | How one GNN layer works | Nancy's update worked out by hand and checked against PyG, information travelling 2 hops, a tiny GNN learning who's a foodie, and over-smoothing |
 | [02 Aggregation](modules/aggregation/) | [▶ watch](https://www.youtube.com/watch?v=TevxIaGq7Cs) | How a node combines its neighbours' messages | Sum vs mean vs max, what each one forgets, and GCN's edge weights |
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Layout
 
@@ -61,9 +61,9 @@ modules/
 tests/                   mirrors common/ and modules/
 ```
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## The graph
 
@@ -88,16 +88,20 @@ Each friend's features are their tastes, written as `[music, outdoors, food]`:
 | 4 | Priya | 0.0 | 0.5 | 0.5 |
 | 5 | Omar | 0.5 | 0.0 | 0.5 |
 
-&nbsp;
+&#160;
 
----
+______________________________________________________________________
 
 ## Development
 
 ```bash
-just fmt        # format and lint with ruff
-just validate   # ruff check + mypy --strict + pytest with 100% coverage
+just fmt        # format and lint with ruff, mdformat and yamlfmt
+just validate   # format check + mypy --strict + pytest with 100% coverage
+just --list --list-submodules   # every recipe, including the per-part ones
 ```
+
+Each part of the codebase has its own justfile in [`justfiles/`](justfiles/) (`common`, `modules`, `repo`), and the
+root `justfile` delegates to them. Run one part on its own with e.g. `just common test` or `just modules mypy`.
 
 <details>
 <summary>Using pip instead of uv</summary>
