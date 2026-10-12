@@ -1,0 +1,8 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "autodiscover": false,
+  "repositories": [
+    "nachatz/gnn-pyg-examples"
+  ],
+  "extends": ["config:recommended", ":disableDependencyDashboard"]
+}
