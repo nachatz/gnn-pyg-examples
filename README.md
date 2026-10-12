@@ -5,6 +5,8 @@ networks work. Open a module and you'll see just its GNN, in `gnn.py`, explained
 see it in action, its `story/` folder runs the model on six friends and prints a short story. Each module also has a
 README that walks through the idea, and a companion video.
 
+> ▶ **Videos:** every module has a companion video on [my YouTube channel](https://www.youtube.com/channel/UC8sEwtZPRADZHXzlOGDHXyw).
+
 &nbsp;
 
 ---

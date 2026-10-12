@@ -1,0 +1,40 @@
+bug:
+- head-branch: [bug]
+
+ci:
+- changed-files:
+  - any-glob-to-any-file: [.github/workflows/**]
+
+documentation:
+- changed-files:
+  - any-glob-to-any-file:
+    - README.md
+    - modules/**/README.md
+
+source:
+- changed-files:
+  - any-glob-to-any-file:
+    - common/**
+    - modules/**
+
+test:
+- changed-files:
+  - any-glob-to-any-file:
+    - tests/**
+    - pytest.ini
+    - .coveragerc
+    - .github/workflows/test.yml
+
+tools:
+- changed-files:
+  - any-glob-to-any-file:
+    - uv.lock
+    - pyproject.toml
+    - requirements.txt
+    - mypy.ini
+    - ruff.toml
+    - mise.toml
+    - justfile
+    - .gitignore
+    - .github/workflows/fmt.yml
+    - .github/workflows/mypy.yml
