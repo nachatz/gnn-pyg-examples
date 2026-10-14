@@ -9,6 +9,8 @@ message-passing: modules::message-passing
 
 aggregation: modules::aggregation
 
+attention: modules::attention
+
 run: modules::run
 
 fmt: common::fmt modules::fmt repo::fmt

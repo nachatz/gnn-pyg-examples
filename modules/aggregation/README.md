@@ -138,4 +138,4 @@ ______________________________________________________________________
 
 ______________________________________________________________________
 
-Previous: [01 · Message passing](../message_passing/)
+Previous: [01 · Message passing](../message_passing/) · Next: [03 · Attention](../attention/)

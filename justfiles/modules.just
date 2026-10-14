@@ -10,7 +10,10 @@ message-passing:
 aggregation:
     uv run python -m modules.aggregation.story
 
-run: message-passing aggregation
+attention:
+    uv run python -m modules.attention.story
+
+run: message-passing aggregation attention
 
 fmt:
     uv run ruff format {{ paths }}

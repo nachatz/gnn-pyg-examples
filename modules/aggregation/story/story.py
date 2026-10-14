@@ -6,6 +6,8 @@ from torch_geometric.utils import degree
 from common.enums.aggregation import Aggregation
 from common.enums.friend import Friend
 from common.enums.taste import Taste
+from common.graph.edges import messages_into
+from common.graph.edges import sender_label
 from common.graph.star import LISTENER
 from common.graph.star import star_graph
 from common.narrator import Cell
@@ -121,17 +123,15 @@ class AggregationStory(Story):
         )
 
     def _show_weights_into(self, receiver: Friend, edge_index_with_self_loops: Tensor, weights: Tensor) -> None:
-        senders, receivers = edge_index_with_self_loops
+        receivers = edge_index_with_self_loops[1]
         # Counted after the self-loops are added, so every friend's degree includes themselves.
         degrees = degree(receivers, num_nodes=len(Friend)).long().tolist()
-        into_receiver = receivers == receiver
-        senders_into_receiver = senders[into_receiver].tolist()
 
         self.narrator.table(
             ["message from", "formula", f"weight into {receiver.label}"],
             [
-                self._weight_row(Friend(sender), receiver, degrees, weight)
-                for sender, weight in zip(senders_into_receiver, weights[into_receiver], strict=True)
+                self._weight_row(sender, receiver, degrees, weight)
+                for sender, weight in messages_into(receiver, edge_index_with_self_loops, weights)
             ],
         )
 
@@ -154,8 +154,7 @@ class AggregationStory(Story):
 
     @classmethod
     def _weight_row(cls, sender: Friend, receiver: Friend, degrees: list[int], weight: Tensor) -> list[Cell]:
-        message_from = "herself" if sender is receiver else sender.label
-        return [message_from, f"1/sqrt({degrees[sender]}*{degrees[receiver]})", weight]
+        return [sender_label(sender, receiver), f"1/sqrt({degrees[sender]}*{degrees[receiver]})", weight]
 
     @classmethod
     def _food_heard(cls, messages: list[Tensor], aggr: Aggregation) -> Tensor:
